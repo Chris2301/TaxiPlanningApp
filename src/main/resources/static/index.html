@@ -1,7 +1,14 @@
 <html>
 <head>
-  <body>
-  Hello World
-  </body>
+  <script src="/js/service.js"></script>
 </head>
+  <body>
+  	RESULT SERVER: <div id="demo"></div>
+	<hr>
+	TEST:
+	endpoint: <input type=text id="endpoint" value="api/test"/><hr />
+	testTitel:<input type="text" id="testTitel"/><br />
+	<button onclick="saveTestService()">Verstuur</button>
+	<button onclick="getTestsServer()">Welke tests zijn er?</button>
+  </body>
 </html>
