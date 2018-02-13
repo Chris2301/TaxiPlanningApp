@@ -2,24 +2,32 @@ package nl.qien.taxi.domain;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Rit {
 
 	@Id
+	@Column( name="rit_id")
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private long id;
 	
 	private String plaats;
-	private LocalTime time;
-	private LocalDate date;
 	
-	public long getId() {
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date date;
+	
+		public long getId() {
 		return id;
 	}
 	public void setId(long id) {
@@ -31,16 +39,10 @@ public class Rit {
 	public void setPlaats(String plaats) {
 		this.plaats = plaats;
 	}
-	public LocalTime getTime() {
-		return time;
-	}
-	public void setTime(LocalTime time) {
-		this.time = time;
-	}
-	public LocalDate getDate() {
+		public Date getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 }
