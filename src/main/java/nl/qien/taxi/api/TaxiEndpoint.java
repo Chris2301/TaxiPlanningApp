@@ -10,12 +10,13 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import nl.qien.taxi.domain.Taxi;
 import nl.qien.taxi.service.TaxiService;
 
 @Path("taxi")
-@Component
+@Controller
 public class TaxiEndpoint {
 	
 	@Autowired

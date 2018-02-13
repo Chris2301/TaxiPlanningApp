@@ -5,6 +5,8 @@ import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
+import nl.qien.taxi.api.RitEndpoint;
+import nl.qien.taxi.api.TaxiEndpoint;
 import nl.qien.taxi.api.TestEndpoint;
 
 
@@ -13,5 +15,8 @@ import nl.qien.taxi.api.TestEndpoint;
 public class JerseyConfig extends ResourceConfig {
 	public JerseyConfig(){
 		register(TestEndpoint.class);
+		register(TaxiEndpoint.class);
+		register (RitEndpoint.class);
+
 	}
 }
