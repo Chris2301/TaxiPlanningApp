@@ -1,7 +1,6 @@
 package nl.qien.taxi.domain;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Type;
+
 
 @Entity
 public class Rit {
