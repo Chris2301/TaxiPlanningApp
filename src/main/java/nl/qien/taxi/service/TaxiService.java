@@ -1,12 +1,14 @@
 package nl.qien.taxi.service;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import nl.qien.taxi.customSelection.TaxiNaamPlusRitInfo;
 import nl.qien.taxi.domain.Taxi;
+import nl.qien.taxi.repository.TaxiRepository;
 
 @Service
 @Transactional
@@ -44,8 +46,12 @@ public class TaxiService {
 		return result;
 	}
 	
-	public List<Taxi> findByAutoType(String typeAuto) {
+	public Collection<Taxi> findByAutoType(String typeAuto) {
 		return taxiRepository.findByTypeAuto(typeAuto);
+	}
+
+	public Collection<TaxiNaamPlusRitInfo> lookupByName(final String name) {
+		return taxiRepository.findByChauffeurNaam(name);
 	}
 	
 

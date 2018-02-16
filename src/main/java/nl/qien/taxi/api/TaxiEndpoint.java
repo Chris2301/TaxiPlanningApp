@@ -12,13 +12,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import nl.qien.taxi.domain.Taxi;
 import nl.qien.taxi.service.TaxiService;
 
 @Path("taxi")
-@Controller
+@RestController
 public class TaxiEndpoint {
 	
 	@Autowired
@@ -67,6 +67,11 @@ public class TaxiEndpoint {
 		return Response.noContent().build();
 	}
 	
-
+	@GET
+	@Path("/chauffeur/{name}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response lookupByName(@PathParam("name") final String name) {
+		return Response.ok(taxiService.lookupByName(name)).build();
+	}
 	
 }

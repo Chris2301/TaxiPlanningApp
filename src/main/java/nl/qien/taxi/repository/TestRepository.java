@@ -1,4 +1,4 @@
-package nl.qien.taxi.service;
+package nl.qien.taxi.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
