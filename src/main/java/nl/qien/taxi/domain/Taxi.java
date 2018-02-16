@@ -13,27 +13,40 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.Where;
+
 
 @Entity
+@Where(clause="deleted='false'")
 public class Taxi {
 	
+	//Many to many Join
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(
-			name = "Taxi-Rit",
+			name = "taxi_x_rit",
 			joinColumns = @JoinColumn(name = "taxi_id"),
 			inverseJoinColumns = @JoinColumn(name = "rit_id")
 			)
 	
 	private List<Rit> ritten;
 	
+	//Fields
 	@Id
 	@Column(name= "taxi_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-
+	
+	@Column(name= "naam_chauffeur")
 	private String chauffeurNaam;
+	
+	@Column(name= "type_auto")
 	private String typeAuto;
 	
+	//SOFT DELETE STATUS COLUMN
+	@Column(name = "deleted")
+	private boolean deleteFlag;
+	
+	//Getters-Setters
 	public long getId() {
 		return id;
 	}
@@ -57,6 +70,13 @@ public class Taxi {
 	}
 	public void setRitten(List<Rit> ritten) {
 		this.ritten = ritten;
+	}
+	
+	public boolean getDeleteFlag() {
+		return deleteFlag;
+	}
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 	
 }
