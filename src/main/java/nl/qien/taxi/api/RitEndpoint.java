@@ -30,7 +30,7 @@ package nl.qien.taxi.api;
 		@POST
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.TEXT_PLAIN)
-		public Response postTrein(Rit rit){
+		public Response postRit(Rit rit){
 			Rit result = ritService.save(rit);
 			return Response.accepted(result.getId()).build();	
 		}
