@@ -28,12 +28,22 @@ public class TaxiEndpoint {
 	private TaxiService taxiService;
 
 
+	// hier probeer ik een POST 
+	
 //	@POST
 //	@Path("/send/{id}")
 //	@Consumes(MediaType.APPLICATION_JSON)
-//	public Response mailInfo() {
-//		Taxi taxi = 
-//		return Response.
+//	public Response mailInfo(@PathParam("id")final long id) {
+//		ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Mail.xml");
+//    	MailMail mm = (MailMail) context.getBean("mailMail");
+//    	
+//    	Taxi taxi = taxiService.findById(id);
+//    	
+//		return Response.accepted(mm.sendMail(	"TaxiApp1234@gmail.com",
+//												taxi.getEmailChauffeur(),
+//												"Hello Guy",
+//												"PoogelyWoopski \n\n Dit werkt al in ieder geval")).build();
+//												
 //	}
 	
 	// Get ALL
