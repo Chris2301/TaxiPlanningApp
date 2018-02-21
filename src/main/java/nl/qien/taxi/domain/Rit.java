@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class Rit {
 
+	//FIELDS
 	@Id
 	@Column( name="rit_id")
 	@GeneratedValue (strategy = GenerationType.AUTO)
@@ -26,7 +27,12 @@ public class Rit {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
-		public long getId() {
+	//SOFT DELETE STATUS COLUMN
+	@Column(name = "deleted")
+	private boolean deleteFlag;
+	
+	//GETTERS / SETTERS
+	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
@@ -43,5 +49,12 @@ public class Rit {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 }
