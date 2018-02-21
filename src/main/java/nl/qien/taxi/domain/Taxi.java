@@ -42,6 +42,9 @@ public class Taxi {
 	@Column(name= "type_auto")
 	private String typeAuto;
 	
+	@Column(name = "email_chauffeur")
+	private String emailChauffeur;
+	
 	//SOFT DELETE STATUS COLUMN
 	@Column(name = "deleted")
 	private boolean deleteFlag;
@@ -79,4 +82,10 @@ public class Taxi {
 		this.deleteFlag = deleteFlag;
 	}
 	
+	public String getEmailChauffeur() {
+		return emailChauffeur;
+	}
+	public void setEmail(String emailChauffeur) {
+		this.emailChauffeur = emailChauffeur;
+	}
 }
