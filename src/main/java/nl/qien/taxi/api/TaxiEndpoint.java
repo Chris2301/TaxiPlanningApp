@@ -12,8 +12,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.qien.taxi.domain.MailMail;
 import nl.qien.taxi.domain.Taxi;
 import nl.qien.taxi.service.TaxiService;
 
@@ -24,6 +27,15 @@ public class TaxiEndpoint {
 	@Autowired
 	private TaxiService taxiService;
 
+
+//	@POST
+//	@Path("/send/{id}")
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public Response mailInfo() {
+//		Taxi taxi = 
+//		return Response.
+//	}
+	
 	// Get ALL
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

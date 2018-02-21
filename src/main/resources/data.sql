@@ -1,8 +1,8 @@
-INSERT INTO taxi (naam_chauffeur, type_auto, deleted) VALUES ("Henk" , "Bus", false);
-INSERT INTO taxi (naam_chauffeur, type_auto, deleted) VALUES ("Herman" , "Auto", false);
-INSERT INTO taxi (naam_chauffeur, type_auto, deleted) VALUES ("Harry" , "Bus", false);
-INSERT INTO taxi (naam_chauffeur, type_auto, deleted) VALUES ("Hester" , "Auto", false);
-INSERT INTO taxi (naam_chauffeur, type_auto, deleted) VALUES ("Halil" , "Bus", false);
+INSERT INTO taxi (naam_chauffeur, type_auto, deleted, email_chauffeur) VALUES ("Henk" , "Bus", false, "TaxiApp1234@gmail.com");
+INSERT INTO taxi (naam_chauffeur, type_auto, deleted, email_chauffeur) VALUES ("Herman" , "Auto", false, "TaxiApp1234@gmail.com");
+INSERT INTO taxi (naam_chauffeur, type_auto, deleted, email_chauffeur) VALUES ("Harry" , "Bus", false, "TaxiApp1234@gmail.com");
+INSERT INTO taxi (naam_chauffeur, type_auto, deleted, email_chauffeur) VALUES ("Hester" , "Auto", false, "TaxiApp1234@gmail.com");
+INSERT INTO taxi (naam_chauffeur, type_auto, deleted, email_chauffeur) VALUES ("Halil" , "Bus", false, "TaxiApp1234@gmail.com");
 
 INSERT INTO rit	(date, plaats) VALUES ("2018-01-13 12:00:00", "Utrecht");
 INSERT INTO rit (date, plaats) VALUES ("2018-02-13 15:00:00", "Amsterdam");
