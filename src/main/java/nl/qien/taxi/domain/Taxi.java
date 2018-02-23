@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.transaction.Transactional;
 
 import org.hibernate.annotations.Where;
 
@@ -24,6 +25,7 @@ public class Taxi {
 	
 	//Many to one Join
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@Where(clause="deleted='false'")
 	@JoinTable(
 			name = "taxi_x_rit",
 			joinColumns = @JoinColumn(name = "taxi_id"),

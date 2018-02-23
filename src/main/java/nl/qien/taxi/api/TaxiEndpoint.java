@@ -96,4 +96,12 @@ public class TaxiEndpoint {
 		return Response.ok(taxiService.lookupByName(name)).build();
 	}
 	
+	@PUT
+	@Path("/set/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateChauffeurVoorRit(@PathParam("id")final long id) {
+		taxiService.updateChauffeurVoorRit(id);
+		return Response.noContent().build();
+	}
+	
 }

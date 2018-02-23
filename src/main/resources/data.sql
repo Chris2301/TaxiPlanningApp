@@ -7,9 +7,9 @@ INSERT INTO taxi (naam_chauffeur, type_auto, deleted, email_chauffeur) VALUES ("
 INSERT INTO rit	(date, plaats, deleted) VALUES ("2018-01-13 12:00:00", "Utrecht", false);
 INSERT INTO rit (date, plaats, deleted) VALUES ("2018-02-13 15:00:00", "Amsterdam", false);
 INSERT INTO rit (date, plaats, deleted) VALUES ("2018-02-13 15:00:00", "Gorinchem", false);
-INSERT INTO rit (date, plaats, deleted) VALUES ("2018-02-13 15:00:00", "Breda", false);
+INSERT INTO rit (date, plaats, deleted) VALUES ("2018-02-16 15:00:00", "Breda", false);
 INSERT INTO rit (date, plaats, deleted) VALUES ("2018-02-13 15:00:00", "Eindhoven", false);
-
+INSERT INTO rit (date, plaats, deleted) VALUES ("2018-02-18 11:00:00", "Rotterdam", false);
 
 INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (1,1);
 
