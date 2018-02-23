@@ -38,8 +38,7 @@ public class TaxiService {
 	
 	//READ (GET ONE/ALL)
 	public Taxi findById(Long id) {
-		Taxi taxi = taxiRepository.findOne(id);
-		return taxi;
+		return taxiRepository.findOne(id);
 	}
 	public Iterable <Taxi> findAll() {
 		Iterable <Taxi> result = taxiRepository.findAll();

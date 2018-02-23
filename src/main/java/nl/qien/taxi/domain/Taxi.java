@@ -11,17 +11,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Where;
+
 
 
 @Entity
 @Where(clause="deleted='false'")
 public class Taxi {
 	
-	//Many to many Join
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	//Many to one Join
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(
 			name = "taxi_x_rit",
 			joinColumns = @JoinColumn(name = "taxi_id"),

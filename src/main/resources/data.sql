@@ -12,17 +12,10 @@ INSERT INTO rit (date, plaats, deleted) VALUES ("2018-02-13 15:00:00", "Eindhove
 
 
 INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (1,1);
-INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (1,2);
-INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (1,4);
-INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (1,5);
 
 INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (2,2);
-INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (2,4);
-INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (2,5);
 
-INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (3,1);
-INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (3,5);
+INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (3,3);
 
+INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (4,4);
 INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (4,5);
-INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (4,1);
-INSERT INTO taxi_x_rit (taxi_id, rit_id) VALUES (4,2);
