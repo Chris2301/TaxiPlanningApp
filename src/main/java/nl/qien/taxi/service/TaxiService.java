@@ -1,12 +1,17 @@
 package nl.qien.taxi.service;
 
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import nl.qien.taxi.customSelection.TaxiNaamPlusRitInfo;
+import nl.qien.taxi.domain.Rit;
 import nl.qien.taxi.domain.Taxi;
 import nl.qien.taxi.repository.TaxiRepository;
 
@@ -17,6 +22,9 @@ public class TaxiService {
 	@Autowired
 	private TaxiRepository taxiRepository;
 	
+	@Autowired
+	private EntityManager em;
+	
 	//CRUD//////////////////////////////////////////////////////
 	
 	//CREATE/UPDATE
@@ -25,8 +33,31 @@ public class TaxiService {
 	}
 	
 	public void update(Taxi taxi, final long id) {
-		taxi.setId(id);
-		taxiRepository.save(taxi);
+		final Rit rit = taxi.getRitten().get(0);
+		final Taxi newTaxi = taxiRepository.findOne(taxi.getId());
+		final long oldTaxiId = taxiRepository.getTaxiIdFromJoinTable(rit.getId());
+		if (oldTaxiId != newTaxi.getId()) {
+			deleteRit(oldTaxiId, rit.getId());
+			em.flush();
+			em.find(Taxi.class, oldTaxiId);
+			updateNewRit(newTaxi, rit);
+		}
+		taxiRepository.save(newTaxi);
+	}
+	
+	public void updateNewRit(Taxi newTaxi, final Rit rit) {
+		List<Rit> newRitten = newTaxi.getRitten();
+		newRitten.add(rit);
+		newTaxi.setRitten(newRitten);
+	}
+	
+	public void deleteRit(final long oldTaxiId, final long ritId) {
+		Taxi oldTaxi = taxiRepository.findOne(oldTaxiId);
+		List<Rit> ritten = oldTaxi.getRitten();
+		ritten.removeIf(el -> ritId == el.getId());
+		oldTaxi.setRitten(ritten);
+		taxiRepository.save(oldTaxi);
+		em.flush();
 	}
 	
 	//SOFT DELETE
@@ -53,5 +84,12 @@ public class TaxiService {
 		return taxiRepository.findByChauffeurNaam(name);
 	}
 	
+	
+	//Set naam to Null
+	public void updateChauffeurVoorRit (final long id) {
+		Taxi taxi1 = findById(id);
+		taxi1.setChauffeurNaam(null);
+		
+	}
 
 }
