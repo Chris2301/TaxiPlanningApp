@@ -28,6 +28,16 @@ public class TaxiService {
 	//CRUD//////////////////////////////////////////////////////
 	
 	//CREATE/UPDATE
+
+//	Save uitleg
+//	1. Hij krijgt info binnen voor Hester (nieuwe plaats en tijd) met 't' 
+//	2. lokale NewTaxi object krijgt de waarden uit de database op de positie (id) van het binnenkomende object
+//	3. if functie zet de binnenkomende null waarde om  naar Hester, want de naam blijft hetzelfde in de database, maar wat er binnenkomt is null
+//	4. Nu maak je een rittenlijst object aan van de bestaande waarde in de oude lijst
+//	5. je voegt daar de nieuwe ritinfo aan het lokale object
+//	6. je set het dan voor de uitgaande info (t)
+//	7. je slaat de uitgaande info op (t)
+	
 	public Taxi save(Taxi t) {
 		Taxi taxi = taxiRepository.findOne(t.getId());
 		if (t.getChauffeurNaam() == null || t.getChauffeurNaam().equalsIgnoreCase("")) {
