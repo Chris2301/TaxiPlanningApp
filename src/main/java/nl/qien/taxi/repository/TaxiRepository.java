@@ -8,12 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import nl.qien.taxi.customSelection.TaxiNaamPlusRitInfo;
 import nl.qien.taxi.domain.Taxi;
 
-@Component
+@Repository
 public interface TaxiRepository extends CrudRepository <Taxi, Long>{
 
 	
