@@ -24,7 +24,7 @@ import org.hibernate.annotations.Where;
 public class Taxi {
 	
 	//Many to one Join
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL)
 	@Where(clause="deleted='false'")
 	@JoinTable(
 			name = "taxi_x_rit",

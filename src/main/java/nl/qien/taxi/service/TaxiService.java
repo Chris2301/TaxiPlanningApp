@@ -39,7 +39,6 @@ public class TaxiService {
 		if (oldTaxiId != newTaxi.getId()) {
 			deleteRit(oldTaxiId, rit.getId());
 			em.flush();
-			em.find(Taxi.class, oldTaxiId);
 			updateNewRit(newTaxi, rit);
 		}
 		taxiRepository.save(newTaxi);
@@ -57,7 +56,6 @@ public class TaxiService {
 		ritten.removeIf(el -> ritId == el.getId());
 		oldTaxi.setRitten(ritten);
 		taxiRepository.save(oldTaxi);
-		em.flush();
 	}
 	
 	//SOFT DELETE
