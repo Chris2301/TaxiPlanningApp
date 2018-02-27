@@ -45,13 +45,15 @@ public class TaxiService {
 //	7. je slaat de uitgaande info op (t)
 
 	public Taxi save(Taxi t) {	
-		final Taxi newTaxi = taxiRepository.findOne(t.getId());
-		if(t.getChauffeurNaam() == null || t.getChauffeurNaam().equalsIgnoreCase("")) {
-			t.setChauffeurNaam(newTaxi.getChauffeurNaam());
+		if (t.getId() != 0) {
+			final Taxi newTaxi = taxiRepository.findOne(t.getId());
+			if(t.getChauffeurNaam() == null || t.getChauffeurNaam().equalsIgnoreCase("")) {
+				t.setChauffeurNaam(newTaxi.getChauffeurNaam());
+			}
+			List<Rit> ritten = newTaxi.getRitten();
+			ritten.add(t.getRitten().get(0));
+			t.setRitten(ritten);
 		}
-		List<Rit> ritten = newTaxi.getRitten();
-		ritten.add(t.getRitten().get(0));
-		t.setRitten(ritten);
 		return taxiRepository.save(t);
 	}
 	
