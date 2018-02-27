@@ -48,7 +48,14 @@ public class TaxiService {
 		return taxiRepository.save(t);
 	}
 	
-	public void update(Taxi taxi, final long id) {
+	//UPDATE TAXI INFO
+	public void updateTaxi(Taxi taxi, final long id) {
+		
+	}
+	
+	
+	// UPDATE CHAUFFEUR VS RIT
+	public void updateTaxiVsRit(Taxi taxi, final long id) {
 		final Rit rit = taxi.getRitten().get(0);
 		final Taxi newTaxi = taxiRepository.findOne(taxi.getId());
 		final long oldTaxiId = taxiRepository.getTaxiIdFromJoinTable(rit.getId());
