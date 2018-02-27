@@ -74,7 +74,7 @@ public class TaxiEndpoint {
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateTaxi(final Taxi taxi, @PathParam("id")final long id) {
-		taxiService.updateTaxiVsRit(taxi, id);
+		taxiService.updateTaxi(taxi, id);
 		return Response.noContent().build();
 	}
 	
