@@ -12,11 +12,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.RestController;
 
-import nl.qien.taxi.domain.MailMail;
 import nl.qien.taxi.domain.Taxi;
 import nl.qien.taxi.service.TaxiService;
 
@@ -68,7 +65,7 @@ public class TaxiEndpoint {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response postTaxi(Taxi taxi){
+	public Response postTaxi(final Taxi taxi){
 		Taxi result = taxiService.save(taxi);
 		return Response.accepted(result.getId()).build();	
 	}
@@ -77,7 +74,7 @@ public class TaxiEndpoint {
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateTaxi(final Taxi taxi, @PathParam("id")final long id) {
-		taxiService.update(taxi, id);
+		taxiService.updateTaxiVsRit(taxi, id);
 		return Response.noContent().build();
 	}
 	
