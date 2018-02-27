@@ -27,7 +27,6 @@ public class TaxiService {
 	//CRUD//////////////////////////////////////////////////////
 	
 	//CREATE/UPDATE
-	
 //	Save uitleg
 //	1. Hij krijgt info binnen voor Hester (nieuwe plaats en tijd) met 't' 
 //	2. lokale NewTaxi object krijgt de waarden uit de database op de positie (id) van het binnenkomende object
