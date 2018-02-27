@@ -24,4 +24,5 @@ public interface TaxiRepository extends CrudRepository <Taxi, Long>{
 	Long getTaxiIdFromJoinTable(@Param("rit_id") final long ritId);
 	
 	
+	
 }

@@ -1,7 +1,11 @@
 package nl.qien.taxi.service;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
 
@@ -20,6 +24,9 @@ public class TaxiService {
 	
 	@Autowired
 	private TaxiRepository taxiRepository;
+	
+	@Autowired
+	private RitService ritService;
 	
 	@Autowired
 	private EntityManager em;
@@ -50,7 +57,36 @@ public class TaxiService {
 	
 	//UPDATE TAXI INFO
 	public void updateTaxi(Taxi taxi, final long id) {
+		Taxi newTaxi = taxiRepository.findOne(id);
+		newTaxi = validateTaxi(newTaxi, taxi);
 		
+		if (taxi.getRitten() != null && taxi.getRitten().size() > 0) {
+			final Rit rit = taxi.getRitten().get(0);
+			final long oldTaxiId = taxiRepository.getTaxiIdFromJoinTable(rit.getId());
+			if (oldTaxiId != newTaxi.getId()) {
+				deleteRit(oldTaxiId, rit.getId());
+				em.flush();
+				updateNewRit(newTaxi, rit);
+			} else {
+				ritService.save(rit);
+			}
+		}
+		taxiRepository.save(newTaxi);
+	}
+	
+	private Taxi validateTaxi(Taxi newTaxi, final Taxi inputTaxi) {
+		if (inputTaxi.getChauffeurNaam() != null) {
+			newTaxi.setChauffeurNaam(inputTaxi.getChauffeurNaam());
+		}
+		
+		if (inputTaxi.getTypeAuto() != null) {
+			newTaxi.setTypeAuto(inputTaxi.getTypeAuto());
+		}
+		
+		if (inputTaxi.getEmailChauffeur() != null) {
+			newTaxi.setEmail(inputTaxi.getEmailChauffeur());
+		}
+		return newTaxi;
 	}
 	
 	
