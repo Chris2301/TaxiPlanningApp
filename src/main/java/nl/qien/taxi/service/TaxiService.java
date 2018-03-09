@@ -31,7 +31,6 @@ public class TaxiService {
 	
 	//CREATE/UPDATE
 	
-
 	public Taxi saveChauf(Taxi t) {
 		return taxiRepository.save(t);
 	}
@@ -40,10 +39,11 @@ public class TaxiService {
 		final Taxi newTaxi = taxiRepository.findOne(t.getId());
 		if(t.getChauffeurNaam() == null || t.getChauffeurNaam().equalsIgnoreCase("")) {
 			t.setChauffeurNaam(newTaxi.getChauffeurNaam());
+			List<Rit> ritten = newTaxi.getRitten();
+			ritten.add(t.getRitten().get(0));
+			t.setRitten(ritten);
+
 		}
-		List<Rit> ritten = newTaxi.getRitten();
-		ritten.add(t.getRitten().get(0));
-		t.setRitten(ritten);
 		return taxiRepository.save(t);
 	}
 	

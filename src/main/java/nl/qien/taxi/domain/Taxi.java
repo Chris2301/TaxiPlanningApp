@@ -12,12 +12,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Where;
 
 
 
 @Entity
 @Where(clause="deleted='false'")
+@DynamicUpdate(true)
 public class Taxi {
 	
 	//Many to one Join
