@@ -1,11 +1,7 @@
 package nl.qien.taxi.service;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
 
@@ -35,24 +31,18 @@ public class TaxiService {
 	
 	//CREATE/UPDATE
 	
-//	Save uitleg
-//	1. Hij krijgt info binnen voor Hester (nieuwe plaats en tijd) met 't' 
-//	2. lokale NewTaxi object krijgt de waarden uit de database op de positie (id) van het binnenkomende object
-//	3. if functie zet de binnenkomende null waarde om  naar Hester, want de naam blijft hetzelfde in de database, maar wat er binnenkomt is null
-//	4. Nu maak je een rittenlijst object aan van de bestaande waarde in de oude lijst
-//	5. je voegt daar de nieuwe ritinfo aan het lokale object
-//	6. je set het dan voor de uitgaande info (t)
-//	7. je slaat de uitgaande info op (t)
-
-	public Taxi save(Taxi t) {	
-		if (t.getId() != 0) {
-			final Taxi newTaxi = taxiRepository.findOne(t.getId());
-			if(t.getChauffeurNaam() == null || t.getChauffeurNaam().equalsIgnoreCase("")) {
-				t.setChauffeurNaam(newTaxi.getChauffeurNaam());
-			}
+	public Taxi saveChauf(Taxi t) {
+		return taxiRepository.save(t);
+	}
+	
+	public Taxi saveRit(Taxi t) {	
+		final Taxi newTaxi = taxiRepository.findOne(t.getId());
+		if(t.getChauffeurNaam() == null || t.getChauffeurNaam().equalsIgnoreCase("")) {
+			t.setChauffeurNaam(newTaxi.getChauffeurNaam());
 			List<Rit> ritten = newTaxi.getRitten();
 			ritten.add(t.getRitten().get(0));
 			t.setRitten(ritten);
+
 		}
 		return taxiRepository.save(t);
 	}
@@ -92,18 +82,18 @@ public class TaxiService {
 	}
 	
 	
-	// UPDATE CHAUFFEUR VS RIT
-	public void updateTaxiVsRit(Taxi taxi, final long id) {
-		final Rit rit = taxi.getRitten().get(0);
-		final Taxi newTaxi = taxiRepository.findOne(taxi.getId());
-		final long oldTaxiId = taxiRepository.getTaxiIdFromJoinTable(rit.getId());
-		if (oldTaxiId != newTaxi.getId()) {
-			deleteRit(oldTaxiId, rit.getId());
-			em.flush();
-			updateNewRit(newTaxi, rit);
-		}
-		taxiRepository.save(newTaxi);
-	}
+//	// UPDATE CHAUFFEUR VS RIT
+//	public void updateTaxiVsRit(Taxi taxi, final long id) {
+//		final Rit rit = taxi.getRitten().get(0);
+//		final Taxi newTaxi = taxiRepository.findOne(taxi.getId());
+//		final long oldTaxiId = taxiRepository.getTaxiIdFromJoinTable(rit.getId());
+//		if (oldTaxiId != newTaxi.getId()) {
+//			deleteRit(oldTaxiId, rit.getId());
+//			em.flush();
+//			updateNewRit(newTaxi, rit);
+//		}
+//		taxiRepository.save(newTaxi);
+//	}
 	
 	public void updateNewRit(Taxi newTaxi, final Rit rit) {
 		List<Rit> newRitten = newTaxi.getRitten();
