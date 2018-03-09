@@ -60,13 +60,20 @@ public class TaxiEndpoint {
 		return Response.ok(taxi).build();
 	}
 	
-	
+	@POST
+	@Path("/create")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response createTaxi(final Taxi taxi){
+		Taxi result = taxiService.saveChauf(taxi);
+		return Response.accepted(result.getId()).build();	
+	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response postTaxi(final Taxi taxi){
-		Taxi result = taxiService.save(taxi);
+		Taxi result = taxiService.saveRit(taxi);
 		return Response.accepted(result.getId()).build();	
 	}
 	

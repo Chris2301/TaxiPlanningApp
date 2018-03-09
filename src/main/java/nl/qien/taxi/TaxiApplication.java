@@ -2,11 +2,6 @@ package nl.qien.taxi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import nl.qien.taxi.domain.MailMail;
-import nl.qien.taxi.domain.Taxi;
 
 @SpringBootApplication
 public class TaxiApplication {
